@@ -1,0 +1,29 @@
+server:
+  port: 9000
+
+spring:
+  application:
+    name: MAYBAY-SERVICE
+  cache:
+    type: redis
+  redis:
+    database: 0
+    host: localhost
+    port: 6379
+  datasource:
+    url: jdbc:mysql://localhost:3306/QLSanBay
+    username: root
+    password: 1234
+  jpa:
+    hibernate:
+      ddl-auto: update  #từ động đồng bộ model với database
+    generate-ddl: true
+    show-sql: true
+
+eureka:
+  client:
+    register-with-eureka: true
+    fetch-registry: true
+    serviceUrl.defaultZone: http://localhost:7000/eureka/
+  instance:
+    hostname: localhost

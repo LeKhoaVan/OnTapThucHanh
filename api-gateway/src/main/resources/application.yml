@@ -1,0 +1,24 @@
+server:
+  port: 9090
+
+spring:
+  application:
+    name: API-GateWay
+  cloud:
+    gateway:
+      routes:
+        - id: CHUYENBAY-SERVICE
+          uri: lb://CHUYENBAY-SERVICE
+          predicates:
+            - Path=/chuyenbay/**
+        - id: MAYBAY-SERVICE
+          uri: lb://MAYBAY-SERVICE
+          predicates:
+            - Path=/maybay/**
+eureka:
+  client:
+    register-with-eureka: true
+    fetch-registry: true
+    serviceUrl.defaultZone: http://localhost:7000/eureka/
+  instance:
+    hostname: localhost
